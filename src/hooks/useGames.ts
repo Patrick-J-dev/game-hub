@@ -7,9 +7,9 @@ export interface Platform {
     id: number;
     name: string;
     slug: string;
-  }
+}
   
-  export interface Game {
+export interface Game {
     id: number;
     name: string;
     background_image: string;
@@ -17,10 +17,10 @@ export interface Platform {
     metacritic: number;
   }
   
-  export interface FetchGameResponse {
+export interface FetchGameResponse {
     count: number;
     results: Game[];
-  }
+}
 
 const useGames = () =>{
     const [games, setGames] = useState<Game[]>([]);

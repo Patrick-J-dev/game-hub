@@ -8,13 +8,14 @@ import {
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import { GameQuery } from "../App";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  gameQuery: GameQuery;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const GenreList = ({ onSelectGenre, gameQuery }: Props) => {
   const { data, loading, error } = useGenres();
   if (error) return null;
   if (loading) return <Spinner></Spinner>;
@@ -29,7 +30,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
               borderRadius={8}
             ></Image>
             <Button
-              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+              fontWeight={genre.id === gameQuery.genre?.id ? "bold" : "normal"}
               variant={"link"}
               fontSize={"lg"}
               onClick={() => onSelectGenre(genre)}
